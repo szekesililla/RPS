@@ -1,12 +1,31 @@
-<!-- <div style="display: block">
-  <canvas mdbChart
-      [chartType]="chartType"
-      [data]="chartData"
-      [labels]="chartLabels"
-      [colors]="chartColors"
-      [options]="chartOptions"
-      [legend]="true"
-      (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)">
-  </canvas>
-</div> -->
+
+
+<!-- <nav class='menu'>
+  <input checked='checked' class='menu-toggler' id='menu-toggler' type='checkbox'>
+  <label for='menu-toggler'></label>
+  <ul>
+    <li class='menu-item' *ngFor="let item of arrayOne(elements); let i = index;">{{i}} : {{weapons2[i]}}>
+      <a class="far fa-hand-{{weapons2[i]}}" title="{{weapons2[i]}}" (click)="pick(i)" [ngClass]="{'selectedWeapon':(playerSelected === i)}"></a>
+    </li>
+  </ul>
+</nav>
+<button (click)="setElements(3)">3</button>
+<button (click)="setElements(5)">5</button>
+<p style="color: white">{{elements}}</p>
+
+<div *ngIf="!loading && isResultShow" class="flex-container flex-center" style="flex-direction: column">
+    <div [ngSwitch]="theResult">
+      <ng-template [ngSwitchCase]="0">
+        <h1> You're the winner! </h1>
+      </ng-template>
+      <ng-template [ngSwitchCase]="1">
+        <h1> You lose. </h1>
+      </ng-template>
+      <ng-template [ngSwitchCase]="2">
+        <h1>It's a tie! </h1>
+      </ng-template>
+      <ng-template ngSwitchDefault> </ng-template>
+    </div>
+    <p> Pick again to continue or </p>
+    <button (click)="reset()" mat-raised-button color="primary"> Reset score</button>
+  </div> -->
