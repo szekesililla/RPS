@@ -8,6 +8,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
+import { SvgCircleModule, SvgLineModule, SvgPolygonModule, SvgPolylineModule, SvgTextModule, SvgPathModule, SvgEllipseModule } from 'angular-svg';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +20,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatCardModule,
     AngularFontAwesomeModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SvgCircleModule,
+    SvgLineModule, 
+    SvgPolygonModule,
+    SvgPolylineModule, 
+    SvgTextModule, 
+    SvgPathModule, 
+    SvgEllipseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

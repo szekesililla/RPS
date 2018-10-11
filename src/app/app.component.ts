@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Circle, Line, Stroke, Polygon, Vertex, Polyline } from 'angular-svg';
 
 @Component({
   selector: 'app-root',
@@ -6,14 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  position = '100 px';
-  elements = 3;
+  position = 200;
+  elements : number;
   title = 'R-P-S-L-S';
   scores = [0 , 0]; // store the scores. index 0 is you. index 1 is player 2.
 
-  arrayOne(n: number): any[] {
+  arrayInRange(n: number): any[] {
     return Array(n);
   }
+
   weapons = {
     0: 'scissors',
     1:'paper',
@@ -35,8 +37,19 @@ export class AppComponent {
   //              2 tie
   theResult = 0 
 
+  radius = 250;
+  circX = [];
+  circY = [];
   setElements(elements: number): void {
     this.elements = elements;
+    this.circX = [];
+    this.circY = [];
+    for (var i = 0; i<elements; i++) {
+      this.circX.push(this.radius * Math.cos(Math.PI * 2 * i / elements - Math.PI / 2));
+      this.circY.push(this.radius * Math.sin(Math.PI * 2 * i / elements - Math.PI / 2));
+    }
+    this.circX.push(1);
+    this.circY.push(1);
   }
 
   pick( weapon: number): void {
@@ -60,6 +73,7 @@ export class AppComponent {
   reset(): void {
    this.scores = [0,0];
   }
+
   checkResult(): void {
     const playerPick = this.playerSelected;
     const enemyPick = this.enemySelected;
@@ -80,6 +94,16 @@ export class AppComponent {
        this.theResult = 1;
          this.scores[1] = this.scores[1]+1;
      }
+  }
+
+  public lines: Line[];
+
+  ngOnInit() {
+    this.lines.push({ x1: 200, y1: 300, x2: 600, y2: 300, stroke: this.colorstroke });
+  }
+
+  constructor() {
+    this.setElements(7);
   }
 
 
