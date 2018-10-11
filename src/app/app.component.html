@@ -1,6 +1,6 @@
 <body>
 
-  <mat-toolbar color="primary">
+  <mat-toolbar>
     Rock Paper Scissors
   </mat-toolbar>
 
@@ -10,38 +10,30 @@
     <button mat-fab color="white" class="score" (click)="setElements(5)">5</button>
     <button mat-fab color="white" class="score" (click)="setElements(7)">7</button>
     <div class="content1">
-        <h2> You</h2>
-        <button mat-fab color="primary" class="score">
-          {{ scores[0] }}
-        </button>
-      </div>
-        <h3> Choose your weapon: </h3>
+      <h2> You</h2>
+      <button mat-fab color="primary" class="score">
+        {{ scores[0] }}
+      </button>
+    </div>
+
+    <h3> Choose your weapon: </h3>
     <mat-card>
       <mat-card-content>
-
-
-
         <div class="content2">
           <div class="enemy-hand" *ngIf="loading">
             <mat-spinner></mat-spinner>
           </div>
           <div class="enemy-hand" *ngIf="enemySelected !== -1 && !loading">
-            <button mat-fab color="white" class="score my-hands">{{weapons[enemySelected]}}</button>
+            <button mat-fab color="white" class="score hands enemy">{{weapons[enemySelected]}}</button>
           </div>
-          <button mat-fab color="white" class="score my-hands" *ngFor="let item of arrayInRange(elements); let i = index;"
+          <button mat-fab color="white" class="score hands" *ngFor="let item of arrayInRange(elements); let i = index;"
             (click)="pick(i)" [ngClass]="{'selectedWeapon':(playerSelected === i)}" title="{{weapons[i]}}" style="position:absolute"
             [style.left.px]='circX[i]+200' [style.top.px]='circY[i]+200'>{{weapons[i]}}</button>
-
-<!--             <svg width="500" height="500"><line *ngFor="let item of arrayInRange(elements); let i = index;" [attr.x1]='circX[i]+200' [attr.y1]='circY[i+]+200' [attr.x2]='circX[i+1]+200' [attr.y2]='circY[i+1]+200' stroke="red"/></svg>
- -->
- <svg height="800" width="1000">
- <g svg-line *ngFor="let line of lines"
- [line]="line"
- (lineMousedown)="onLineClick($event)"></g></svg>
         </div>
-
       </mat-card-content>
     </mat-card>
+
+
 
     <!-- Player 2 -->
     <mat-card>
@@ -73,20 +65,3 @@
       <p> Pick again to continue or </p>
       <button (click)="reset()" mat-raised-button color="primary"> Reset score</button>
     </div>
-
-    <mat-card-content>
-      <div class="content1">
-        <h2>You</h2>
-        <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
-      </div>
-      <h3> Choose your weapon: </h3>
-      <div class="content2">
-        <i (click)="pick(0)" [ngClass]="{'selectedWeapon':(playerSelected === 0)}" class="fa fa-hand-rock-o"></i>
-        <i (click)="pick(1)" [ngClass]="{'selectedWeapon':(playerSelected === 1)}" class="fa fa-hand-paper-o"></i>
-        <i (click)="pick(2)" [ngClass]="{'selectedWeapon':(playerSelected === 2)}" class="fa fa-hand-scissors-o"></i>
-      </div>
-
-
-      <div class="flex-container flex-center" *ngIf="loading">
-        <mat-spinner></mat-spinner>
-      </div>

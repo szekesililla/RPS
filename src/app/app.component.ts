@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Circle, Line, Stroke, Polygon, Vertex, Polyline } from 'angular-svg';
 
 @Component({
   selector: 'app-root',
@@ -96,11 +95,6 @@ export class AppComponent {
      }
   }
 
-  public lines: Line[];
-
-  ngOnInit() {
-    this.lines.push({ x1: 200, y1: 300, x2: 600, y2: 300, stroke: this.colorstroke });
-  }
 
   constructor() {
     this.setElements(7);
