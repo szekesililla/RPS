@@ -9,7 +9,7 @@ export class AppComponent {
   position = 200;
   elements : number;
   title = 'R-P-S-L-S';
-  scores = [0 , 0]; // store the scores. index 0 is you. index 1 is player 2.
+  scores = [0 , 0];
 
   arrayInRange(n: number): any[] {
     return Array(n);
@@ -29,12 +29,12 @@ export class AppComponent {
 
   playerSelected = -1;
   enemySelected  = -1;
-  loading= false; // we're going to show a loading spinner when waiting for the enemy pick.
+  loading= false;
   isResultShow = false;
   // theResult -  0 winner
   //              1 lose
   //              2 tie
-  theResult = 0 
+  theResult = 0; 
 
   radius = 250;
   circX = [];
@@ -52,13 +52,10 @@ export class AppComponent {
   }
 
   pick( weapon: number): void {
-    // return immediately when still loading. You don't want
-    // the user to spam the button.
     if(this.loading) return;
     this.loading = true;
     this.playerSelected = weapon;
    
-   //create a delay to simulate enemy's turn.
     setTimeout( () => {
       this.loading = false;
       // generate a number from 0 - number of elements 
@@ -95,10 +92,8 @@ export class AppComponent {
      }
   }
 
-
   constructor() {
     this.setElements(7);
   }
-
 
 }

@@ -1,67 +1,44 @@
 <body>
 
   <mat-toolbar>
-    Rock Paper Scissors
+    {{title}}
+    <div *ngIf="!loading" class="winner" [ngSwitch]="theResult">
+      <ng-template [ngSwitchCase]="0">
+        <h1> You're the winner! </h1>
+      </ng-template>
+      <ng-template [ngSwitchCase]="1">
+        <h1> You lose. </h1>
+      </ng-template>
+      <ng-template [ngSwitchCase]="2">
+        <h1>It's a tie! </h1>
+      </ng-template>
+      <ng-template ngSwitchDefault> </ng-template>
+    </div>
   </mat-toolbar>
 
+  <mat-card>
+    <mat-card-content>
+      <button mat-fab color="white" class="score" (click)="setElements(3)">3</button>
+      <button mat-fab color="white" class="score" (click)="setElements(5)">5</button>
+      <button mat-fab color="white" class="score" (click)="setElements(7)">7</button>
+      <div class="content2">
+        <div class="enemy-hand" *ngIf="loading">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div class="enemy-hand" *ngIf="enemySelected !== -1 && !loading">
+          <button mat-fab color="white" class="score hands enemy">{{weapons[enemySelected]}}</button>
+        </div>
+        <button mat-fab color="white" class="score hands" *ngFor="let item of arrayInRange(elements); let i = index;"
+          (click)="pick(i)" [ngClass]="{'selectedWeapon':(playerSelected === i)}" title="{{weapons[i]}}" style="position:absolute"
+          [style.left.px]='circX[i]+200' [style.top.px]='circY[i]+200'>{{weapons[i]}}</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
   <div class="content">
-    <!-- You -->
-    <button mat-fab color="white" class="score" (click)="setElements(3)">3</button>
-    <button mat-fab color="white" class="score" (click)="setElements(5)">5</button>
-    <button mat-fab color="white" class="score" (click)="setElements(7)">7</button>
     <div class="content1">
       <h2> You</h2>
-      <button mat-fab color="primary" class="score">
-        {{ scores[0] }}
-      </button>
-    </div>
-
-    <h3> Choose your weapon: </h3>
-    <mat-card>
-      <mat-card-content>
-        <div class="content2">
-          <div class="enemy-hand" *ngIf="loading">
-            <mat-spinner></mat-spinner>
-          </div>
-          <div class="enemy-hand" *ngIf="enemySelected !== -1 && !loading">
-            <button mat-fab color="white" class="score hands enemy">{{weapons[enemySelected]}}</button>
-          </div>
-          <button mat-fab color="white" class="score hands" *ngFor="let item of arrayInRange(elements); let i = index;"
-            (click)="pick(i)" [ngClass]="{'selectedWeapon':(playerSelected === i)}" title="{{weapons[i]}}" style="position:absolute"
-            [style.left.px]='circX[i]+200' [style.top.px]='circY[i]+200'>{{weapons[i]}}</button>
-        </div>
-      </mat-card-content>
-    </mat-card>
-
-
-
-    <!-- Player 2 -->
-    <mat-card>
-      <div class="content1">
-        <h2> Player 2</h2>
-        <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
-      </div>
-      <br><br>
-
-      <div *ngIf="enemySelected !== -1" class="flex-container flex-center">
-        <i class="far fa-hand-{{weapons[enemySelected]}}"></i>
-      </div>
-
-
-    </mat-card>
-    <div *ngIf="!loading && isResultShow" class="flex-container flex-center" style="flex-direction: column">
-      <div [ngSwitch]="theResult">
-        <ng-template [ngSwitchCase]="0">
-          <h1> You're the winner! </h1>
-        </ng-template>
-        <ng-template [ngSwitchCase]="1">
-          <h1> You lose. </h1>
-        </ng-template>
-        <ng-template [ngSwitchCase]="2">
-          <h1>It's a tie! </h1>
-        </ng-template>
-        <ng-template ngSwitchDefault> </ng-template>
-      </div>
-      <p> Pick again to continue or </p>
-      <button (click)="reset()" mat-raised-button color="primary"> Reset score</button>
+      <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
+      <h2> Enemy</h2>
+      <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
     </div>
