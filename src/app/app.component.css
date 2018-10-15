@@ -1,11 +1,3 @@
-/* html{
-  background: url(img/back5.png);
-  height: 100%; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
 mat-toolbar {
   background: #225378!important;
 }
@@ -14,8 +6,26 @@ mat-card {
   background-color: transparent;
 }
 
-.winner {
-  margin-left: 50px;
+.header {
+  color: white;
+}
+
+.my-scroe{
+  float: left;
+}
+
+.enemy-scroe{
+  float: left;
+}
+.mat-grid-tile {
+  overflow: inherit!important;
+}
+
+.who-the-winner {
+  height: 100px;
+  text-align: center;
+/*   padding-top: 0!important;
+  overflow: hidden!important; */
 }
 
 .mat-spinner::ng-deep circle {
@@ -26,22 +36,11 @@ mat-card {
   height: 500px;
   width: 500px;
   position: relative;
-  left: 34.5%;
+/*   left: 34.5%; */
   border-radius: 50%;
   border: 5px solid #ffffff05;
   margin-top: 50 px!important;
 } 
-
-.enemy-hand {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-}
 
 .hands {
   width: 100px;
@@ -53,11 +52,23 @@ mat-card {
   transition: 0.5s;
 }
 
-.hands:hover {
-  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: white;
-  background: rgba(255, 255, 255, 0.3);
-  font-size: 1.6em;
+.my-hands:hover {
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white;
+    background: rgba(255, 255, 255, 0.3);
+    font-size: 1.6em;
+  }
+
+.enemy-hand {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
 }
 
 .enemy {
@@ -71,7 +82,7 @@ mat-card {
 }
 .far{
   cursor:pointer;
-  font-size:5em;
+  font-size:1.5em;
 }
 
 .selectedWeapon{

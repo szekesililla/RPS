@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 body {
-    background-color:#2a2a2a;
+    background-image: radial-gradient( at 49% 60%, #459a7c, #0a2231);
+    font-family: 'Comfortaa', cursive;  
 }

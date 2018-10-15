@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,6 +27,18 @@ export class AppComponent {
     7:'spider-man',
     8:'glock'
   }
+
+ /*  weapons = {
+    0:"far fa-hand-scissors",
+    1:"far fa-hand-paper",
+    2:"far fa-hand-rock",
+    3:"far fa-hand-spock",
+    4:"far fa-hand-lizard",
+    5:"far fa-hat-wizard",
+    6:"far fa-bat",
+    7:"far fa-spider",
+    8:"far fa-mace"
+  } */
 
   playerSelected = -1;
   enemySelected  = -1;
@@ -93,7 +106,7 @@ export class AppComponent {
   }
 
   constructor() {
-    this.setElements(7);
+    this.setElements(9);
   }
 
 }

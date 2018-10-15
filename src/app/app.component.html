@@ -1,6 +1,65 @@
 <body>
 
-  <mat-toolbar>
+  <mat-grid-list class="header" cols="9" rowHeight="150px">
+    <mat-grid-tile colspan="3" rowspan="1">
+      <h2> Me</h2>
+      <button mat-fab color="primary" class="score"><h2> Me</h2>{{ scores[0] }}</button>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="3" rowspan="1" class="who-the-winner">
+      <div *ngIf="!loading" class="winner" [ngSwitch]="theResult">
+        <ng-template [ngSwitchCase]="-1">
+          <h1> Pick a hand </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="0">
+          <h1> You're the winner! </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="1">
+          <h1> You lose. </h1>
+        </ng-template>
+        <ng-template [ngSwitchCase]="2">
+          <h1>It's a tie! </h1>
+        </ng-template>
+        <h2>Scissors cuts paper</h2>
+        <ng-template ngSwitchDefault> </ng-template>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="3" rowspan="1">
+      <h2> Enemy</h2>
+      <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="5">
+
+    <mat-grid-tile colspan="1" rowspan="2">
+        <button mat-fab color="white" class="score" (click)="setElements(3)">3</button>
+        <button mat-fab color="white" class="score" (click)="setElements(5)">5</button>
+        <button mat-fab color="white" class="score" (click)="setElements(7)">7</button>
+        <button mat-fab color="white" class="score" (click)="setElements(9)">9</button>
+
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3" rowspan="2">
+      <div class="content2">
+        <div class="enemy-hand" *ngIf="loading">
+          <mat-spinner></mat-spinner>
+        </div>
+        <div class="enemy-hand" *ngIf="enemySelected !== -1 && !loading">
+          <button mat-fab color="white" class="score hands enemy">{{weapons[enemySelected]}}</button>
+        </div>
+        <button mat-fab color="white" class="score hands my-hands" *ngFor="let item of arrayInRange(elements); let i = index;"
+          (click)="pick(i)" [ngClass]="{'selectedWeapon':(playerSelected === i)}" title="{{weapons[i]}}" style="position:absolute"
+          [style.left.px]='circX[i]+200' [style.top.px]='circY[i]+200'>{{weapons[i]}}</button>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="2">
+      uzj
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+  <!--   <mat-toolbar>
     {{title}}
     <div *ngIf="!loading" class="winner" [ngSwitch]="theResult">
       <ng-template [ngSwitchCase]="0">
@@ -28,7 +87,7 @@
         <div class="enemy-hand" *ngIf="enemySelected !== -1 && !loading">
           <button mat-fab color="white" class="score hands enemy">{{weapons[enemySelected]}}</button>
         </div>
-        <button mat-fab color="white" class="score hands" *ngFor="let item of arrayInRange(elements); let i = index;"
+        <button mat-fab color="white" class="score hands my-hands" *ngFor="let item of arrayInRange(elements); let i = index;"
           (click)="pick(i)" [ngClass]="{'selectedWeapon':(playerSelected === i)}" title="{{weapons[i]}}" style="position:absolute"
           [style.left.px]='circX[i]+200' [style.top.px]='circY[i]+200'>{{weapons[i]}}</button>
       </div>
@@ -41,4 +100,4 @@
       <button mat-fab color="primary" class="score">{{ scores[0] }}</button>
       <h2> Enemy</h2>
       <button mat-fab color="accent" class="score">{{ scores[1] }}</button>
-    </div>
+    </div> -->
