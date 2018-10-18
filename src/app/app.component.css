@@ -10,8 +10,17 @@ i {
   font-size: 1.5em;
 }
 
+h1 {
+  color: #EB7F00;
+}
+
 h2 {
   color: #EB7F00;
+  margin-top: auto;
+}
+
+h2::first-letter {
+  text-transform: uppercase;
 }
 
 .mat-grid-tile {
@@ -31,7 +40,7 @@ h2 {
   stroke: #EB7F00;
 }
 
-.content2{
+.the-cicrle{
   height: 500px;
   width: 500px;
   position: relative;

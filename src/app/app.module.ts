@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import 'hammerjs';
 import { ScoreComponent } from './score/score.component';
 import { UltimatenessComponent } from './ultimateness/ultimateness.component';
+import { WhoWinComponent } from './who-win/who-win.component';
 
 
 
@@ -20,7 +21,8 @@ import { UltimatenessComponent } from './ultimateness/ultimateness.component';
   declarations: [
     AppComponent,
     ScoreComponent,
-    UltimatenessComponent
+    UltimatenessComponent,
+    WhoWinComponent
   ],
   imports: [
     BrowserModule,

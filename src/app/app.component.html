@@ -10,22 +10,24 @@
   <mat-grid-list cols="7" rowHeight="200px">
 
     <mat-grid-tile colspan="4" rowspan="3">
-      <div class="content2">
+      <div class="the-cicrle">
           <div *ngIf="!loading" class="winner" [ngSwitch]="theResult">
               <ng-template [ngSwitchCase]="-1">
                 <h2 style="color:white!important"> Pick a hand </h2>
               </ng-template>
               <ng-template [ngSwitchCase]="0">
                 <h2> You win! </h2>
+                <h2>{{weapons[playerSelected]}} {{randomVerb}} {{weapons[enemySelected]}}</h2>
               </ng-template>
               <ng-template [ngSwitchCase]="1">
                 <h2> You lose. </h2>
+                <h2>{{weapons[enemySelected]}} {{randomVerb}} {{weapons[playerSelected]}}</h2>
               </ng-template>
               <ng-template [ngSwitchCase]="2">
                 <h2>It's a tie! </h2>
+                <h2>The beginning of a friendship</h2>
               </ng-template>
-<!--               <h2>Scissors cuts paper</h2>
- -->              <ng-template ngSwitchDefault> </ng-template>
+              <ng-template ngSwitchDefault> </ng-template>
             </div>
         <div class="enemy-hand" *ngIf="loading">
           <mat-spinner></mat-spinner>
