@@ -7,10 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  position = 200;
-  elements : number;
-  title = 'R-P-S-L-S';
-  scores = [0 , 0];
+  title = 'ROCK PAPER SCISSOR ULTIMATE';
 
   arrayInRange(n: number): any[] {
     return Array(n);
@@ -18,37 +15,37 @@ export class AppComponent {
 
   weapons = {
     0: 'scissors',
-    1:'paper',
-    2:'rock',
-    3:'spock',
-    4:'lizard',
-    5:'wizard',
-    6:'batman',
-    7:'spider-man',
-    8:'glock'
+    1: 'paper',
+    2: 'rock',
+    3: 'spock',
+    4: 'lizard',
+    5: 'wizard',
+    6: 'catman',
+    7: 'spider-man',
+    8: 'cigar'
   }
 
- /*  weapons = {
-    0:"far fa-hand-scissors",
-    1:"far fa-hand-paper",
-    2:"far fa-hand-rock",
-    3:"far fa-hand-spock",
-    4:"far fa-hand-lizard",
-    5:"far fa-hat-wizard",
-    6:"far fa-bat",
-    7:"far fa-spider",
-    8:"far fa-mace"
-  } */
+  weaponIcons = {
+    0: "fas fa-hand-scissors",
+    1: "fas fa-hand-paper",
+    2: "fas fa-hand-rock",
+    3: "fas fa-hand-spock",
+    4: "fas fa-hand-lizard",
+    5: "fas fa-hat-wizard",
+    6: "fas fa-cat",
+    7: "fas fa-spider",
+    8: "fas fa-joint"
+  }
 
   playerSelected = -1;
-  enemySelected  = -1;
-  loading= false;
+  enemySelected = -1;
+  loading = false;
   isResultShow = false;
-  // theResult -  0 winner
-  //              1 lose
-  //              2 tie
-  theResult = 0; 
+  theResult = -1; // 0-win, 1-lose, 2-tie
+  scores = [0, 0];
 
+  elements: number;
+  position = 200;
   radius = 250;
   circX = [];
   circY = [];
@@ -56,57 +53,49 @@ export class AppComponent {
     this.elements = elements;
     this.circX = [];
     this.circY = [];
-    for (var i = 0; i<elements; i++) {
-      this.circX.push(this.radius * Math.cos(Math.PI * 2 * i / elements - Math.PI / 2));
-      this.circY.push(this.radius * Math.sin(Math.PI * 2 * i / elements - Math.PI / 2));
+    for (var i = 0; i < elements; i++) {
+      this.circX.push(this.radius * Math.cos(Math.PI * 2 * i / elements - Math.PI / 2) + this.position);
+      this.circY.push(this.radius * Math.sin(Math.PI * 2 * i / elements - Math.PI / 2) + this.position);
     }
-    this.circX.push(1);
-    this.circY.push(1);
   }
 
-  pick( weapon: number): void {
-    if(this.loading) return;
+  pick(weapon: number): void {
+    if (this.loading) return;
     this.loading = true;
     this.playerSelected = weapon;
-   
-    setTimeout( () => {
+
+    setTimeout(() => {
       this.loading = false;
-      // generate a number from 0 - number of elements 
-      const randomNum =  Math.floor(Math.random() * this.elements ) ;
+      // generate a number from 0 to number of elements 
+      const randomNum = Math.floor(Math.random() * this.elements);
       this.enemySelected = randomNum;
       this.checkResult();
       this.isResultShow = true;
-    },  Math.floor(Math.random()  * 500 ) +200);
-  }
- 
-  reset(): void {
-   this.scores = [0,0];
+    }, Math.floor(Math.random() * 500) + 200);
   }
 
   checkResult(): void {
     const playerPick = this.playerSelected;
     const enemyPick = this.enemySelected;
 
-    console.log('player: ' + playerPick + " enemy: " + enemyPick);
-
-    if( playerPick ==  enemyPick)
-     {
-     this.theResult = 2;
-   }
-     else if ( ( (playerPick - enemyPick + this.elements)% this.elements)% 2 == 0)    {
-       // YOU WIN
-       this.theResult = 0;
-       this.scores[0] = this.scores[0]+1;
-     }
-     else{
-       // YOU LOSE
-       this.theResult = 1;
-         this.scores[1] = this.scores[1]+1;
-     }
+    if (playerPick == enemyPick) {
+      this.theResult = 2;
+    }
+    else if (((playerPick - enemyPick + this.elements) % this.elements) % 2 == 0) {
+      // YOU WIN
+      this.theResult = 0;
+      this.scores[0] = this.scores[0] + 1;
+    }
+    else {
+      // YOU LOSE
+      this.theResult = 1;
+      this.scores[1] = this.scores[1] + 1;
+    }
   }
 
   constructor() {
     this.setElements(9);
   }
+
 
 }

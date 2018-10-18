@@ -6,26 +6,25 @@ mat-card {
   background-color: transparent;
 }
 
-.header {
-  color: white;
+i {
+  font-size: 1.5em;
 }
 
-.my-scroe{
-  float: left;
+h2 {
+  color: #EB7F00;
 }
 
-.enemy-scroe{
-  float: left;
-}
 .mat-grid-tile {
   overflow: inherit!important;
 }
 
-.who-the-winner {
-  height: 100px;
+.winner {
   text-align: center;
-/*   padding-top: 0!important;
-  overflow: hidden!important; */
+  margin-top: 90px;
+}
+
+.who-the-winner {
+  text-align: center;
 }
 
 .mat-spinner::ng-deep circle {
@@ -36,7 +35,6 @@ mat-card {
   height: 500px;
   width: 500px;
   position: relative;
-/*   left: 34.5%; */
   border-radius: 50%;
   border: 5px solid #ffffff05;
   margin-top: 50 px!important;
@@ -50,6 +48,7 @@ mat-card {
   background: rgba(255, 255, 255, 0.2);
   margin: 0!important;
   transition: 0.5s;
+  position: absolute!important;
 }
 
 .my-hands:hover {
@@ -57,7 +56,7 @@ mat-card {
     color: white;
     background: rgba(255, 255, 255, 0.3);
     font-size: 1.6em;
-  }
+}
 
 .enemy-hand {
   position: absolute;
@@ -75,16 +74,13 @@ mat-card {
   background-color: #EB7F00;
 }
 
-.score{
-  margin-top:.5em;
-  margin-left:2em;
-  font-size:1.5em
-}
-.far{
-  cursor:pointer;
-  font-size:1.5em;
+.selectedWeapon{
+  background: rgba(255, 255, 255, 0.42);
+  color: #255a54;
 }
 
-.selectedWeapon{
-  color: background;
+.score {
+  margin-top: .5em;
+  margin-left: 2em;
+  font-size: 1.5em;
 }

@@ -8,11 +8,19 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatSliderModule} from '@angular/material/slider';
+import { FormsModule } from '@angular/forms';
+import 'hammerjs';
+import { ScoreComponent } from './score/score.component';
+import { UltimatenessComponent } from './ultimateness/ultimateness.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScoreComponent,
+    UltimatenessComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +29,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     AngularFontAwesomeModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSliderModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
